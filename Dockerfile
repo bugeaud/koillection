@@ -83,6 +83,7 @@ RUN set -eux ; \
     case $ARCHITECTURE in \
     x86_64) ARCHITECTURE="x86_64" ;; \
     aarch64 | armv8* | arm64) ARCHITECTURE="aarch64" ;; \
+    arm | armv7*) ARCHITECTURE="arm" ;; \    
     *) \
     echo "(!) Architecture $ARCHITECTURE unsupported" \
     exit 1 \
@@ -101,8 +102,8 @@ RUN set -eux ; \
 
 
 # Install curl-impersonate
-ADD https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.1/libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz /opt/
-RUN cd /opt tar xvzf libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz rm libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz
+#ADD https://github.com/lwthiker/curl-impersonate/releases/download/v0.6.1/libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz /opt/
+#RUN cd /opt tar xvzf libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz rm libcurl-impersonate-v0.6.1.x86_64-linux-gnu.tar.gz
 
 FROM koillection-base AS koillection-final
 
