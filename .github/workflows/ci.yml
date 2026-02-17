@@ -68,7 +68,7 @@ jobs:
         run: docker load --input /tmp/ci-container.tar
 
       - name: Run doctrine schema validator
-        uses: addnab/docker-run-action@v3
+        uses:  maus007/docker-run-action-fork@v1
         with:
           image: ci-image
           run: |
@@ -100,7 +100,7 @@ jobs:
         run: docker load --input /tmp/ci-container.tar
 
       - name: Run tests
-        uses: addnab/docker-run-action@v3
+        uses: maus007/docker-run-action-fork@v1
         with:
           image: ci-image
           options: |
