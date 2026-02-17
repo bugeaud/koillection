@@ -22,6 +22,8 @@ jobs:
           tags: ci-image
           push: false
           outputs: type=docker,dest=/tmp/ci-container.tar
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6
