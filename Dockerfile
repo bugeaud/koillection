@@ -80,16 +80,19 @@ USER root
 RUN set -eux ; \
     # Determine architecture \
     ARCHITECTURE="$(uname -m)" ; \
+    PLATFORM="linux-gnu" ; \
     case $ARCHITECTURE in \
     x86_64) ARCHITECTURE="x86_64" ;; \
     aarch64 | armv8* | arm64) ARCHITECTURE="aarch64" ;; \
-    arm | armv7*) ARCHITECTURE="arm" ;; \    
+    arm | armv7*) \
+    PLATFORM="linux-gnueabihf" \
+    ARCHITECTURE="arm" ;; \ 
     *) \
     echo "(!) Architecture $ARCHITECTURE unsupported" \
     exit 1 \
     ;; \
     esac ;\
-    FILE_NAME="libcurl-impersonate-v${CURL_IMPERSONATE_VERSION}.${ARCHITECTURE}-linux-gnu.tar.gz" ; \
+    FILE_NAME="libcurl-impersonate-v${CURL_IMPERSONATE_VERSION}.${ARCHITECTURE}-${PLATFORM}.tar.gz" ; \
     curl \
     --fail \
     --location \
